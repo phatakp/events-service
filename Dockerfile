@@ -1,17 +1,15 @@
 # Stage 1: Build the application
-FROM eclipse-temurin:21-jdk AS builder
+FROM maven:3.9.9-amazoncorretto-21 AS builder
 WORKDIR /app
 
-# Copy the Maven project files (pom.xml) and download dependencies
-COPY pom.xml .
-RUN mvn dependency:resolve-plugins dependency:go-offline -B
+# Copy the Project files (pom.xml) and download dependencies
+COPY . .
 
-# Copy source code and build the JAR
-COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-COPY app/target/*.jar app.jar
+FROM eclipse-temurin:21-jdk
+COPY --from=builder /app/target/*.jar app.jar
 
 # Expose the port your Spring Boot app runs on (default is 8080)
 EXPOSE 8080
