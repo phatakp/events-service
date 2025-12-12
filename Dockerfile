@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy the Maven project files (pom.xml) and download dependencies
 COPY pom.xml .
-RUN mvn dependency::resolve-plugins dependency:go-offline -B
+RUN mvn dependency:resolve-plugins dependency:go-offline -B
 
 # Copy source code and build the JAR
 COPY src ./src
