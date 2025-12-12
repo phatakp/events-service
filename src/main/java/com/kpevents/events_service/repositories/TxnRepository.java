@@ -23,10 +23,9 @@ public interface TxnRepository extends JpaRepository<Transaction, Long> {
             "left join fetch t.user " +
             "left join fetch t.donation d " +
             "where t.committee=:committee " +
-            "and d.year=:year " +
             "and t.txnType='donation' " +
-            "and (t.txnSubType is null or " +
-            "t.txnSubType = 'additional') ")
+            "and ((t.txnSubType is null and d.year=:year ) " +
+            "or t.txnSubType = 'additional') ")
     List<Transaction> getDonationsByCommitteeForYear(
             @Param("committee") Committee committee,
             @Param("year") Short year);

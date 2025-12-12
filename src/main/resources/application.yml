@@ -15,6 +15,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: ${app.debug}
+    open-in-view: ${app.debug}
   flyway:
     baseline-on-migrate: true
+springdoc:
+  api-docs:
+    enabled: ${app.debug}
+  swagger-ui:
+    enabled: ${app.debug}

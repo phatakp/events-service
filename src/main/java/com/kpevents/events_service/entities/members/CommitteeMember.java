@@ -1,5 +1,6 @@
 package com.kpevents.events_service.entities.members;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kpevents.events_service.entities.enums.Committee;
 import com.kpevents.events_service.entities.users.User;
@@ -26,8 +27,8 @@ public class CommitteeMember {
     private Boolean isActive = false;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
     private User user;
 }

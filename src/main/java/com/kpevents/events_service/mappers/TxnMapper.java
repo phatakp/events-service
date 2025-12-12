@@ -35,7 +35,7 @@ public class TxnMapper {
     public static Transaction toTransaction(DonationRequestDTO request) {
         var txn = new Transaction();
         txn.setAmount(request.getAmount());
-        txn.setDate(LocalDate.now());
+        txn.setDate(request.getDate());
         txn.setTxnType(request.getTxnType());
         txn.setTxnMode(request.getTxnMode());
         txn.setCommittee(request.getCommittee());
@@ -47,7 +47,7 @@ public class TxnMapper {
     public static Transaction toTransaction(OtherTxnRequestDTO request, Boolean fromUser) {
         return Transaction.builder()
                 .amount(fromUser ? request.getAmount() * -1 : request.getAmount())
-                .date(LocalDate.now())
+                .date(request.getDate())
                 .txnType(!request.getIsTransfer()
                         ? TxnType.expense
                         : fromUser
@@ -62,7 +62,7 @@ public class TxnMapper {
 
     public static Transaction toTransaction(Transaction txn, DonationRequestDTO request) {
         txn.setAmount(request.getAmount());
-        txn.setDate(LocalDate.now());
+        txn.setDate(request.getDate());
         txn.setTxnMode(request.getTxnMode());
         txn.setDescription(request.getDescription());
         return txn;
@@ -70,7 +70,7 @@ public class TxnMapper {
 
     public static Transaction toTransaction(Transaction txn, OtherTxnRequestDTO request, Boolean fromUser) {
         txn.setAmount(fromUser ? request.getAmount() * -1 : request.getAmount());
-        txn.setDate(LocalDate.now());
+        txn.setDate(request.getDate());
         if (!request.getIsTransfer()) {
             txn.setDescription(request.getDescription());
         }

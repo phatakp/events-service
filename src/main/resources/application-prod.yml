@@ -9,3 +9,4 @@ app:
   db-pwd: ${DB_PWD}
   db-host: ${DB_HOST}
   db-url: ${DB_URL}
+  debug: false
