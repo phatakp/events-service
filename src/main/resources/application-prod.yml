@@ -1,0 +1,11 @@
+app:
+  env: ${APP_ENV}
+  url: ${APP_URL}
+  allowed-origins: ${FRONTEND_URL}
+  clerk-jwks-url: ${CLERK_JWKS_URL}
+  clerk-issuer: ${CLERK_ISSUER}
+  db-name: ${DB_NAME}
+  db-user: ${DB_USER}
+  db-pwd: ${DB_PWD}
+  db-host: ${DB_HOST}
+  db-url: ${DB_URL}

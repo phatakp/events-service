@@ -1,0 +1,20 @@
+server:
+  servlet:
+    context-path: "/api/v1"
+
+spring:
+  application:
+    name: events-service
+  profiles:
+    active: prod
+  datasource:
+    url: ${app.db-url}
+    username: ${app.db-user}
+    password: ${app.db-pwd}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  flyway:
+    baseline-on-migrate: true
