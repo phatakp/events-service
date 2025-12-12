@@ -11,7 +11,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-COPY --from=builder /app/target/*.jar app.jar
+COPY app/target/*.jar app.jar
 
 # Expose the port your Spring Boot app runs on (default is 8080)
 EXPOSE 8080
