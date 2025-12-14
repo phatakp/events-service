@@ -1,0 +1,1 @@
+alter sequence committee_members_id_seq start with 33 restart with 33 MINVALUE 33;
